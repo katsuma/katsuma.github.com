@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="../jquery.flickr.js"></script>
+    <title>jquery.flickr.js sample</title>
+	<style>
+	  #user_name_wrapper { text-align: center; }
+	  #user_name_wrapper * { margin: 0 auto; }
+	  .content { margin: 0 0 1em; }
+	  .photos { background: #EEE; overflow: hidden; padding:10px; }
+	  .textfield{ display: block; }
+	  .flickrimg{ margin: 3px; }
+	</style>
+  </head>
+  <body>
+
+	<h1>jquery.flickr.js sample</h1>
+
+	<div id="user_name_wrapper">
+	  <label for="user_name">Flickr user name</label>
+	  <input type="text" id="user_name" value="katsuma" name="user_name" class="textfield" />
+	</div>
+
+	<div class="content">
+	  <h2>Simple load</h2>
+	  <p><button id="load1">Load</button></p>
+	  <div id="photos1" class="photos"></div>
+	  <script>
+		$('#load1').click(function(){
+	    var user_name = $('#user_name').val();
+	    $('#photos1').flickr({ user_name: user_name });
+		});
+	  </script>
+	</div>
+
+
+	<div class="content">
+	  <h2>Set load number</h2>
+	  <label for="load_num">load num</label>
+	  <input type="text" id="load_num" value="3" name="load_num" class="textfield" />
+	  <p><button id="load2">Load</button></p>
+	  <div id="photos2" class="photos"></div>
+	  <script>
+		$('#load2').click(function(){
+	    var user_name = $('#user_name').val();
+	    var num = $('#load_num').val();
+	    $('#photos2').flickr({ user_name: user_name, view_num : num });
+		});
+	  </script>
+	</div>
+
+
+	<div class="content">
+	  <h2>Set thumbnail size</h2>
+	  <input type="radio" name="size" value="square" checked="1" />Square
+	  <input type="radio" name="size" value="thumbnail" />Thumbnail
+	  <input type="radio" name="size" value="small" />Small
+	  <input type="radio" name="size" value="medium" />Medium
+	  <input type="radio" name="size" value="medium640" />Medium640
+	  <input type="radio" name="size" value="original" />Original
+	  <p><button id="load3">Load</button></p>
+	  <div id="photos3" class="photos"></div>
+	  <script>
+		$('#load3').click(function(){
+	    var user_name = $('#user_name').val();
+	    var size = $('input[name=size]:checked').val();
+	    $('#photos3').flickr({ user_name: user_name, view_num : 1, size : size });
+		});
+	  </script>
+	</div>
+
+  </body>
+</html>
